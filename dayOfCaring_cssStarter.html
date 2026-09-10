@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>United Way Southwestern Indiana - Day of Caring</title>
+
+    <!-- ======================================================
+         PRACTICE EXERCISE: Add all of your CSS rules inside
+         this <style> element (this makes it an "embedded
+         stylesheet" - see Slide 3!). Follow the numbered
+         tasks in CSS_Box_Model_Practice.pdf
+    ======================================================= -->
+    <style>
+
+      /* ---------- PART 1: Selectors ---------- */
+      /* 1.1 - 1.7 go here */
+        p {
+            line-height: 1.6;
+            color: #333;
+        }
+        .nav-list {
+            list-style: none;
+            padding: 0;
+        }
+        .nav-item {
+            display: inline-block;
+            margin: 20px;
+        }
+        #site-header {
+            background-color: var(--light-brand-blue);
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--brand-blue);
+        }
+        a:hover {
+            color: #112f4d;
+        }
+        h1, h2, h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+        nav > ul {
+            border-bottom: var(--lines-color)
+        }
+
+      /* ---------- PART 2: Color, Background, Font & Text ---------- */
+      /* 2.1 - 2.4 go here (start with your :root variables!) */
+
+        :root {
+            --brand-blue: #1c4e80;
+            --brand-yellow: #f2b134;
+            --base-font: Arial, Helvetica, sans-serif;
+            --lines-color: #555555;
+            --light-background: #ecd7ae;
+            --light-brand-blue: #8aacce;
+        }
+        nav {
+            background-color: var(--brand-yellow);
+        }
+        body {
+            background-color: var(--light-background);
+            font-family: var(--base-font);
+        }
+        h1 {
+            font-size: 45px;
+            font-weight: bold;
+        }
+        .nav-item a {
+            text-transform: uppercase;
+        }
+        #signup > h2 {
+            text-align: center;
+        }
+
+      /* ---------- PART 3: The Box Model ---------- */
+      /* 3.1 - 3.6 go here */
+
+        section {
+        padding: 20px;
+        border: 2px solid var(--brand-blue);
+        margin: 20px 0;
+        }
+        .nav-list {
+            padding: 10px 15px; 
+            /* The first number controls top/bottom padding, second number is left/right padding. 
+            This assumes symmetry unless you define all 4 when it can be more specific*/
+        }
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border-width: 3px;
+            border-style: dotted;
+            border-color: var(--brand-blue);
+            padding: 5px;
+        }
+
+      /* ---------- PART 4: Float & Clear ---------- */
+      /* 4.1 - 4.2 goes here */
+
+      .stat-badge {
+        width: 300px;
+        padding: 5px 8px;
+        border: 1px solid var(--brand-blue);
+        float: left;
+        text-align: center;
+      }
+      footer {
+        padding: 12px;
+        background-color: var(--light-brand-blue);
+        text-align: center;
+      }
+      a[href^=mailto] {
+        color: var(--brand-blue);
+      }
+
+
+    </style>
+</head>
+<body>
+    <!-- HEADER & NAVIGATION CONTAINER -->
+    <header id="site-header">
+        <h1>United Way of Southwestern Indiana</h1>
+        <p>Day of Caring - Annual Community Service Event</p>
+    </header>
+
+    <nav>
+        <h2>Main Menu</h2>
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#about">About Day of Caring</a></li>
+            <li class="nav-item"><a href="#schedule">Event Schedule & Projects</a></li>
+            <li class="nav-item"><a href="#signup">Volunteer Registration Form</a></li>
+            <li class="nav-item"><a href="#media">Media & Video Coverage</a></li>
+        </ul>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main>
+
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <h2>About Day of Caring</h2>
+            <article>
+                <div class="stat-badge">Over 3,000 students supported!</div>
+                <h3>Serving Vanderburgh, Warrick, and Spencer Counties</h3>
+                <p>The United Way of Southwestern Indiana Day of Caring is the largest coordinated volunteer service event in the region. Nearly a thousand volunteers from dozens of local companies and organizations come together to provide hands-on support to area non-profits.</p>
+                <p>Volunteers assist local organizations with landscaping, painting, outdoor clean-up, facility reorganization, computer setup, and interactive activities with youth and community members.</p>
+            </article>
+        </section>
+
+        <!-- SCHEDULE & PROJECTS TABLE SECTION -->
+        <section id="schedule">
+            <h2>Day of Caring Schedule & Project Opportunities</h2>
+            <p>Review the event timeline and regional project schedule below:</p>
+            <table>
+                <caption>Day of Caring Schedule & Service Location</caption>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Main Events</th>
+                        <th>Vanderburgh County Sites</th>
+                        <th>Warrick & Spencer Sites</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>8:00am - 9:00am</td>
+                        <td colspan="3">Community Kickoff Breakfast at Old National Event Plaza</td>
+                    </tr>
+                    <tr>
+                        <td>9:00am - 1:00pm</td>
+                        <td rowspan="2">Easter Seals & Boys & Girls Club Service Project</td>
+                        <td>Park Clean-up & Beautification</td>
+                        <td>Youth Center Landscaping</td>
+                    </tr>
+                    <tr>
+                        <td>1:00pm - 3:00pm</td>
+                        <td>Community Theatre Painting & Organization</td>
+                        <td>School Computer & Tech Setup</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="3">Total Counties Served</th>
+                        <td>3 counties</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <!-- VOLUNTEER REGISTRATION FORM SECTION -->
+        <section id="signup">
+            <h2>Volunteer Sign-Up Form</h2>
+            <form action="https://example.com/apply" method="POST">
+
+                <fieldset>
+                    <legend>Contact Information</legend>
+                    <p>
+                        <label for="first-name">First Name:</label>
+                        <input type="text" name="first-name" id="first-name" placeholder="e.g., Sarah">
+                    </p>
+                    <p>
+                        <label for="last-name">Last Name:</label>
+                        <input type="text" name="last-name" id="last-name" placeholder="e.g., Connor">
+                    </p>
+                    <p>
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" id="email" placeholder="e.g., volunteer@example.com">
+                    </p>
+                    <p>
+                        <label for="phone">Phone:</label>
+                        <input type="text" name="phone" id="phone" placeholder="e.g., 812-555-0199">
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Event Preferences & Logistics</legend>
+
+                    <p>Attending Kickoff Breakfast? (Radio Button - Choose One):</p>
+                    <p>
+                        <input type="radio" name="attend-breakfast" id="breakfast-yes" value="yes" checked>
+                        <label for="breakfast-yes">Yes, attending Kickoff Breakfast at Old National Events Plaza</label>
+                        <br>
+                        <input type="radio" name="attend-breakfast" id="breakfast-no" value="no">
+                        <label for="breakfast-no">No, reporting directly to volunteer service site</label>
+                    </p>
+
+                    <p>Preferred Volunteer Work Types (Checkbox - Choose Multiple):</p>
+                    <p>
+                        <input type="checkbox" name="activities" id="act-landscaping" value="landscaping" checked>
+                        <label for="act-landscaping">Landscaping & Outdoor Maintenance</label>
+                        <br>
+                        <input type="checkbox" name="activities" id="act-painting" value="painting">
+                        <label for="act-painting">Painting & Facility Maintenance</label>
+                        <br>
+                        <input type="checkbox" name="activities" id="act-cleaning" value="cleaning">
+                        <label for="act-cleaning">Cleaning & Reorganization</label>
+                        <br>
+                        <input type="checkbox" name="activities" id="act-youth" value="youth">
+                        <label for="act-youth">Preschool & Youth Activities Support</label>
+                    </p>
+
+                    <p>
+                        <label for="county-preference">Preferred County:</label>
+                        <select id="county-preference" name="county-preference">
+                            <option value="vanderburgh" selected>Vanderburgh County</option>
+                            <option value="warrick">Warrick County</option>
+                            <option value="spencer">Spencer County</option>
+                        </select>
+                    </p>
+                </fieldset>
+
+                <p>
+                    <button type="submit">Complete Volunteer Registration</button>
+                </p>
+            </form>
+        </section>
+
+        <!-- MULTIMEDIA SECTION -->
+        <section id="media">
+            <h2>Media & Video Coverage</h2>
+            <article>
+                <h3>Past News Coverage: Annual Day of Caring</h3>
+                <p>Watch the Eyewitness News WEHT/WTVW report highlighting volunteers during a past Day of Caring event:</p>
+                <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/g0rhgqlObuI?si=J6_F21tvpg-Qr8eV"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+            </article>
+        </section>
+
+    </main>
+
+    <!-- FOOTER CONTAINER -->
+    <footer>
+        <address>
+            United Way of Southwestern Indiana<br>
+            215 NW Third Street, Evansville, IN 47708<br>
+            Email: <a href="mailto:info@unitedwayswi.org">info@unitedwayswi.org</a>
+        </address>
+    </footer>
+
+</body>
+</html>
