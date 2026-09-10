@@ -79,8 +79,28 @@
                 <fieldset>
                     <legend>Contact Information</legend>
 
-                    <!--Create the Contact Information form here-->
-                    
+                    <p>
+                        <label for="first">
+                            First Name
+                            <input id="first" name="first" type="text" placeholder="e.g., Sarah">
+                        </label>
+                        <br>
+                        <label for="last">
+                            Last Name
+                            <input id="first" name="first" type="text" placeholder="e.g., Connor">
+                        </label>
+                        <br>
+                        <label for="email">
+                            Email Address
+                            <input id="email" name="email" placeholder="example@email.com">
+                        </label>
+                        <br>
+                        <label for="email">Phone Number
+                            <input id="phone" name="email" placeholder="812-###-####">
+                        </label>
+                        <br>
+                    </p>
+
                 </fieldset>
 
                 <fieldset>
@@ -91,18 +111,51 @@
                     <!-- Radio Buttons Widget (Single Choice) -->
                     <p>Attending Kickoff Breakfast? (Radio Button - Choose One):</p>
                     <p>
-                        <!--Complete code here-->
+                        <input type="radio" id="yes" name="attendance" value="yes">
+                        <label for="yes">
+                            Yes, attending Kickoff Breakfast at Old National Events Plaza
+                        </label>
+                        <br>
+
+                        <input type="radio" id="no" name="attendance" value="no" checked>
+                        <label for="no">
+                            No, reporting directly to volunteer service site
+                        </label>
                     </p>
 
                     <!-- Checkbox Widgets (Multiple Choice) -->
                     <p>Preferred Volunteer Work Types (Checkbox - Choose Multiple):</p>
                     <p>
-                        <!--Complete code here-->
+                        <input type="checkbox" id="landscaping" name="landscaping" value="landscaping" checked>
+                        <label for="landscaping">Landscaping & Outdoor Maintenance</label>
+                        <br>
+
+                        <input type="checkbox" id="painting" name="painting" value="painting">
+                        <label for="painting">Painting & Facility Maintenance</label>
+                        <br>
+                        
+                        <input type="checkbox" id="cleaning" name="cleaning" value="cleaning">
+                        <label for="cleaning">Cleaning & Reorganization</label>
+                        <br>
+
+                        <input type="checkbox" id="preschool" name="preschool" value="preschool">
+                        <label for="preschool">Preschool & Youth Activities Support</label>
+                        <br>
                     </p>
 
                     <!-- Select Dropdown Menu -->
                     <p>
-                        <!--Complete code here-->
+                        <label for="county">
+                            Preferred County: 
+                            <select>
+                                <option value="vanderburgh">Vanderburgh County</option>
+                                <option value="warrick">Warrick County</option>
+                                <option value="marion">Marion County</option>
+                                <option value="henderson">Henderson County</option>
+                                <option value="johnson">Johnson County</option>
+                                <option value="hamilton">Hamilton County</option>
+                            </select>
+                        </label>
                     </p>
                 </fieldset>
 
@@ -121,7 +174,7 @@
                 <h3>Past News Coverage: Annual Day of Caring </h3>
                 <p>Watch the Eyewitness News WEHT/WTVW report highlighting volunteers during a past Day of Caring event:</p>
                 <!-- Embedd this YouTube video: https://www.youtube.com/watch?v=g0rhgqlObuI here -->
-                
+                <iframe src="https://www.youtube.com/embed/g0rhgqlObuI" width="500"></iframe>
             </article>
         </section>
 
