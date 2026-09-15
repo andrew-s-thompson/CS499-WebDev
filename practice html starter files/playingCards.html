@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+   <title>Playing cards</title>
+   <style>
+      .table {
+         width: 400px;
+         height: 300px;
+         background: linear-gradient(forestgreen, darkgreen);
+      }
+
+      .card-red {
+         color: red;
+      }
+
+      .card-black {
+         color: black;
+      }
+
+      .card {
+         background-color: whitesmoke;
+         border: 1px solid black;         
+         width: 100px;
+         height: 160px;
+         line-height: 160px;
+         text-align: center;
+         font-size: 80px;
+         border-radius: 5px;
+         box-shadow: 3px 3px black;
+      }      
+
+      .card-top {
+         /* TODO: Add part of your solution here */
+         position: absolute;
+         left: 150px;
+         top: 100px;
+         z-index: 1;
+      }
+
+      .card-bottom {
+         /* TODO: Add part of your solution here */
+         position: absolute;
+         left: 240px;
+         top: 120px;
+         z-index: 0;
+      }
+
+      .heart {
+         color: red;
+         font-size: 28px; 
+         width: 30px;
+         height: 30px;  
+         line-height: 30px;
+      }
+
+      .spade {
+         color: black;
+         font-size: 36px; 
+         width: 30px;
+         height: 30px;  
+         line-height: 30px;
+      }
+
+      .top-left {
+         /* TODO: Add part of your solution here */
+         position: absolute;
+         left: 2px;
+         top: 2px;
+
+      }
+
+      .bottom-right {
+         /* TODO: Add part of your solution here */
+         position: absolute;
+         right: 2px;
+         bottom: 2px;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="table">
+      <div class="card card-top card-black">A
+         <span class="spade top-left">&#9824;</span>
+         <span class="spade bottom-right">&#9824;</span>
+      </div>
+      <div class="card card-bottom card-red">5
+         <span class="heart top-left">&#10084;</span>
+         <span class="heart bottom-right">&#10084;</span>
+      </div>
+   </div>
+</body>
+</html>

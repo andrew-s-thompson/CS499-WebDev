@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>binary eats - Oatmeal Coconut Pantry Cookies</title>
+      
+      <style>
+         /* TODO: Add your solutions here */
+         header {
+            display: flex;
+            justify-content: space-between;
+         }
+         .content {
+            display: flex;
+            flex-wrap: wrap;
+         }
+         .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            flex-grow: 1;
+            flex-basis: 70%;
+         }
+         .title { 
+            display: flex;
+            align-items: baseline;
+         }
+         .summary {
+            display: flex;
+            justify-content: space-evenly;
+            flex-grow: 1;
+            flex-basis: 100%;
+         }
+         div > p > summary {
+            display: flex;
+            justify-content: space-between;
+         }
+         .ingredients, .directions {
+            flex-grow: 1;
+            flex-basis: 45%;
+         }
+         .directions {
+            flex-grow: 1;
+            flex-basis: 45%;
+         }
+         .related-content {
+            flex-grow: 1;
+            flex-basis: 20%;
+         }
+         
+
+
+
+         /* Given CSS rules below */
+         body {
+            margin: 0;
+            font-family: Helvetica, sans-serif;
+         }
+
+         header {
+            border-bottom: 2px solid #93B5C6;
+            background-color: #DDEDAA;
+            padding: 8px;
+         }
+
+         .logo {
+            color: #BD4F6C;
+            font-size: 18px;
+         }
+
+         .content {
+            margin-left: 30px;
+         }
+
+         .title {
+            border-bottom: 1px dashed #93B5C6;
+         }
+
+         .title h1 {
+            color: #BD4F6C;
+         }
+
+         .title p {
+            color: #93B5C6;
+            margin-left: 30px;
+         }
+
+         .summary {
+            margin-top: 30px;
+         }
+
+         .summary > div {
+            background-color: #DDEDAA;
+            border: 2px solid #93B5C6;
+            border-radius: 5px;
+            color: #BD4F6C;
+            padding: 5px;
+            width: 210px;
+         }
+
+         .related-content {
+            margin-left: 100px;
+         }
+
+         .related-content h2 {
+            font-size: 18px;
+         }
+      </style>
+   </head>
+
+   <body>
+      <header>
+         <span class="logo">binary eats</span>
+         <nav>
+            <a href="">sign-in</a>
+            <a href="">search</a>
+         </nav>
+      </header>
+      <main class="content">
+         <div class="main-content">
+            <section class="title">
+               <h1>OATMEAL COCONUT PANTRY COOKIES</h1>
+               <p>Chef Roman, September 15, 2026</p>
+            </section>
+            <section class="summary">
+               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7b5NmEIFA7LnatAOO5yU0Mkj8QBWnUJfqBNvcgkMkdw&s=10" 
+                  alt="World's best oatmeal cookies"
+                  height="250"
+                  width="250"
+               >
+               <div>
+                  <p>
+                     <span>Prep Time:</span>
+                     <span>30 minutes</span>
+                  </p>
+                  <p>
+                     <span>Cooking Time:</span>
+                     <span>9-13 minutes</span>
+                  </p>
+                  <p>
+                     <span>Skill level:</span>
+                     <span>Easy</span>
+                  </p>
+                  <p>
+                     <span>Makes:</span>
+                     <span>24 cookies</span>
+                  </p>
+               </div>
+            </section>
+            <section class="ingredients">
+               <h2>Ingredients</h2>
+                  <ul>
+                  <li>⅔ cup granulated sugar</li>
+                  <li>⅔ cup packed brown sugar</li>
+                  <li>1 cup butter</li>
+                  <li>2 eggs</li>
+                  <li>1 teaspoon vanilla</li>
+                  <li>1 teaspoon baking soda</li>
+                  <li>½ teaspoon baking powder</li>
+                  <li>½ teaspoon salt</li>
+                  <li>3 cups quick-cooking or old-fashioned oats</li>
+                  <li>1 cup all-purpose flour</li>
+                  <li>1 ½ cup Toasted Coconut*</li>
+                  <li>½ cup golden raisins</li>
+                  <li>½ cup chopped walnuts</li>
+                  <li>½ cup mini chocolate chips</li>
+               </ul>
+               <p>* Now with more coconut</p>
+            </section>
+            <section class="directions">
+               <h2>Directions</h2>
+               <ol>
+                  <li>Toast coconut at 350° F for about 10-15 minutes. Stir/toss every 5 minutes. 
+                      Coconut should be golden brown. Be careful... coconut can go from golden brown 
+                      to burnt very quickly. Cool completely.</li>
+                  <li>Beat sugar, butter, vanilla, and eggs.</li>
+                  <li>Mix all other ingredients together. The flour should coat all the ingredients. 
+                      Then mix into the wet ingredients.</li>
+                  <li>Scoop cookies and press the dough firmly to ensure the shape is held.</li>
+                  <li>Bake at 375° F for about 9-13 minutes. This really depends on how big you made 
+                      the cookies. Start at 9 minutes, and then just keep checking until they are 
+                      done.</li>
+               </ol>
+            </section>
+         </div>
+         <aside class="related-content">
+            <section>
+               <h2>010 RELATED RECIPES:</h2>
+               <ul>
+                  <li>Melt-in-the-mouth Cookies</li>
+                  <li>German Chocolate Cake</li>
+               </ul>
+            </section>
+            <section>
+               <h2>TOP 011 RECIPES:</h2>
+               <ul>
+                  <li>Umeboshi Chicken</li>
+                  <li>Battleship Curry</li>
+                  <li>Gran Marnier Souffle</li>
+               </ul>
+            </section>
+         </aside>
+      </main>
+   </body>
+</html>
