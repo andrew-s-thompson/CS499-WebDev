@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DOM, Events & Forms</title>
+  <style>
+    body { font-family: sans-serif; max-width: 500px; margin: 40px auto; }
+    .highlight { color: blue; }
+    .invalid { border: 2px solid red; }
+    #errorMsg { color: red; }
+  </style>
+</head>
+<body>
+
+  <h1 id="title">Hello</h1>
+  <button id="addItemBtn">Add Task</button>
+  <ul id="todo-list"></ul>
+
+  <hr />
+
+  <form id="signupForm">
+    <input type="text" id="username" placeholder="Username" required minlength="3" /><br /><br />
+    <input type="email" id="email" placeholder="Email" required /><br /><br />
+    <input type="password" id="password" placeholder="Password" required minlength="8" /><br /><br />
+    <button type="submit">Sign Up</button>
+    <p id="errorMsg"></p>
+  </form>
+
+  <script>
+    /* ======================================================
+       Part  1 — Searching & Modifying the DOM
+       ====================================================== */
+
+    // 1.1: Select and read
+    const title = document.querySelector('#title');
+    console.log(title.textContent);
+    console.log(typeof title);
+
+    // // 1.2: Modify content
+    title.textContent = 'Welcome, students!'
+    title.innerHTML = 'Welcome, <em>students</em>!'
+
+
+    // // 1.3: Modify style/class
+    title.classList.add('highlight'); // uses the .highlight class defined in <style> above
+
+    // 1.4: Create and insert elements
+    const list = document.querySelector('#todo-list');
+    const item = document.createElement('li');
+    item.textContent = 'Learn the DOM';
+    list.appendChild(item);
+    
+    /* ======================================================
+       Part 2 — Events & Event Handlers
+       ====================================================== */
+
+    // 2.1: Basic listener
+    const button = document.querySelector('#addItemBtn');
+    button.addEventListener('click', () => {
+      console.log('Button was clicked!');
+    });
+
+    // 2.2: Use the event object
+    button.addEventListener('click', (event) => {
+      console.log(event.type, event.target);
+    });
+
+    // 2.3: Combine with Segment A — build the Add Task feature
+    button.addEventListener('click', () => {
+      const newItem = document.createElement('li');
+      newItem.innerHTML = `Task ${list.children.length + 1} <span>(new)</span>`;
+      list.appendChild(newItem);
+    });
+
+    // 2.4: Event delegation — ONE listener on the parent <ul>, not one per <li>
+    list.addEventListener('click', (event) => {
+      if (event.target.matches('li')) {
+        event.target.remove();
+      }
+    });
+    
+
+    /* ======================================================
+       Part 3 — Forms & Validation
+       ====================================================== */
+
+    const form = document.querySelector('#signupForm');
+    const password = document.querySelector('#password');
+    const email = document.querySelector('#email');
+    const errorMsg = document.querySelector('#errorMsg');
+
+    // 3.1: Prevent default and read values
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      console.log(document.querySelector('#username').value);
+
+      // 3.3: Add custom JS validation (built into this same handler)
+      if (password.value.length < 8) {
+        errorMsg.textContent = 'Password must be at least 8 characters.';
+        return;
+      }
+
+      errorMsg.textContent = '';
+      console.log('Form is valid!');
+    });
+
+    // 3.4: Constraint Validation API
+    // email.addEventListener('input', () => {
+    //   email.classList.toggle('invalid', !email.validity.valid);
+    // });
+  </script>
+
+</body>
+</html>
