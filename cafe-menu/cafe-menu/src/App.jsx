@@ -2,7 +2,12 @@ import MenuItem from './components/MenuItem.jsx';
 import { menu } from './data.js'
 import Footer from './components/Footer.jsx';
 import OrderForm from './components/OrderForm.jsx'
+import CafeInspiration from './components/CafeInspiration.jsx'
 import { useState } from 'react';
+import { Routes, Route, NavLink } from 'react-router';
+import Home from './pages/Home.jsx'
+import About from './pages/About.jsx'
+import Menu from './pages/Menu.jsx'
 
 export default function App() {
   const [state, toggle] = useState(0)
@@ -13,10 +18,7 @@ export default function App() {
   }
   function removeFromOrder(id) {
     if (order[id] > 0) {
-      setOrder(prev => ({ ...prev, [id]: (prev[id] ?? 0) - 1 }));
-    }
-    else {
-      alert(id + " could not be removed")
+      setOrder(prev => ({ ...prev, [id]: Math.max(0, (prev[id] ?? 0) - 1) }));
     }
     
   }
@@ -64,14 +66,35 @@ export default function App() {
   }
 return (
   <div className="page">
+    <nav>
+      <NavLink to="/" end>Home</NavLink>
+      {' | '}
+      <NavLink to="/menu">Menu</NavLink>
+      {' | '}
+      <NavLink to="/about">About</NavLink>
+    </nav>
     <h1>Campus Cafe</h1>
     <p className="tagline">Fresh coffee between classes</p>
-    <h2>Today's Menu</h2>
-    {state ? 
-    (<button onClick={toggleMenu}>Show Full Menu</button>):
-    (<button onClick={toggleMenu}>Show Drinks</button>) }
-    {state ? (displayDrinks) : (displayMenu)}
-    <OrderForm totalItems={totalItems} onPlaceOrder={placeOrder} />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About /> } />
+      <Route path="/menu" element={
+        <Menu
+          state={state}
+          toggleMenu={toggleMenu}
+          displayDrinks={displayDrinks}
+          displayMenu={displayMenu}
+          totalItems={totalItems}
+          placeOrder={placeOrder}
+        />
+
+      } />
+      <Route
+      path="*"
+      element={<h2>404 - Page Not Found</h2>}
+      />
+
+    </Routes>
     <Footer />
   </div>
   );
