@@ -1,87 +1,89 @@
 import express from 'express'; 
-import { readFile, writeFile } from 'node:fs/promises'; 
-import { randomUUID } from 'node:crypto'; 
+import { pool } from './db.js'; 
  
 const app = express(); 
 const PORT = 3001; 
-const dataFile = new URL('./tasks.json', import.meta.url); 
  
 app.use(express.json()); 
  
-async function readTasks() { 
-  const text = await readFile(dataFile, 'utf8'); 
-  return JSON.parse(text); 
-} 
- 
-async function saveTasks(tasks) { 
-  await writeFile(dataFile, JSON.stringify(tasks, null, 2)); 
-} 
- 
-// READ: return all tasks 
+// READ: all tasks 
 app.get('/api/tasks', async (req, res) => { 
   try { 
-    res.json(await readTasks()); 
+    const result = await pool.query( 
+      'SELECT id, text, completed FROM tasks ORDER BY text' 
+    ); 
+    res.json(result.rows); 
   } catch (error) { 
+    console.error(error); 
     res.status(500).json({ error: 'Could not read tasks' }); 
   } 
 }); 
  
-// CREATE: add one task 
+// CREATE: one task 
 app.post('/api/tasks', async (req, res) => { 
   const text = req.body?.text; 
   if (typeof text !== 'string' || !text.trim()) { 
     return res.status(400).json({ error: 'Task text is required' }); 
   } 
   try { 
-    const tasks = await readTasks(); 
-    const task = { 
-      id: randomUUID(), 
-      text: text.trim(), 
-      completed: false 
-    }; 
-    tasks.push(task); 
-    await saveTasks(tasks); 
-    res.status(201).json(task); 
+    const result = await pool.query( 
+      'INSERT INTO tasks (text) VALUES ($1) RETURNING id, text, completed', 
+      [text.trim()] 
+    ); 
+    res.status(201).json(result.rows[0]); 
   } catch (error) { 
+    console.error(error); 
     res.status(500).json({ error: 'Could not create task' }); 
   } 
 }); 
  
-// UPDATE: change the completed field 
+// UPDATE: completion status 
 app.patch('/api/tasks/:id', async (req, res) => { 
- 
   if (typeof req.body?.completed !== 'boolean') { 
     return res.status(400).json({ error: 'completed must be true or false' }); 
   } 
   try { 
-    const tasks = await readTasks(); 
-    const task = tasks.find(item => item.id === req.params.id); 
-    if (!task) { 
+    const result = await pool.query( 
+      'UPDATE tasks SET completed = $1 WHERE id::text = $2 ' + 
+      'RETURNING id, text, completed', 
+      [req.body.completed, req.params.id] 
+    ); 
+    if (result.rowCount === 0) { 
+ 
       return res.status(404).json({ error: 'Task not found' }); 
     } 
-    task.completed = req.body.completed; 
-    await saveTasks(tasks); 
-    res.json(task); 
+    res.json(result.rows[0]); 
   } catch (error) { 
+    console.error(error); 
     res.status(500).json({ error: 'Could not update task' }); 
   } 
 }); 
  
-// DELETE: remove one task 
+// DELETE: one task 
 app.delete('/api/tasks/:id', async (req, res) => { 
   try { 
-    const tasks = await readTasks(); 
-    const remaining = tasks.filter(item => item.id !== req.params.id); 
-    if (remaining.length === tasks.length) { 
+    const result = await pool.query( 
+      'DELETE FROM tasks WHERE id::text = $1', 
+      [req.params.id] 
+    ); 
+    if (result.rowCount === 0) { 
       return res.status(404).json({ error: 'Task not found' }); 
     } 
-    await saveTasks(remaining); 
     res.status(204).send(); 
   } catch (error) { 
+    console.error(error); 
     res.status(500).json({ error: 'Could not delete task' }); 
   } 
 }); 
  
-app.listen(PORT, () => { 
-  console.log(`API running at http://localhost:${PORT}`); 
-});
+// Check the connection before accepting requests. 
+try { 
+  await pool.query('SELECT 1'); 
+  app.listen(PORT, () => { 
+    console.log(`API running at http://localhost:${PORT}`); 
+  }); 
+} catch (error) { 
+  console.error('Database connection failed:', error.message); 
+  process.exitCode = 1; 
+  await pool.end(); 
+}
