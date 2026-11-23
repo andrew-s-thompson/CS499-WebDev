@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { Link } from 'react-router'
 
-function MenuItem({name, desc, price, available, count, onAdd, onRemove}) {
+function MenuItem({id, name, desc, price, available, count, onAdd, onRemove}) {
 return (<div className="menu-item">
       <h3>{name}</h3>
       <p>{desc}</p>
       <p className="price">${price.toFixed(2)}</p>
+      <p><Link to={`/menu/${id}`}>View Details</Link></p>
       {
       count>0 && 
         <p className="order-count">In your order: {count}</p>      }
