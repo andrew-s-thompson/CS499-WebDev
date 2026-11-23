@@ -1,0 +1,12 @@
+[
+  {
+    "id": "2",
+    "text": "Study Express",
+    "completed": true
+  },
+  {
+    "id": "c1bc02d0-e0fa-4160-872e-3f3b91b33208",
+    "text": "Complete React Assignment",
+    "completed": false
+  }
+]
